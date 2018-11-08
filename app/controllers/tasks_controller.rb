@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all
+    @tasks = Task.all.page(params[:page])
   end
 
   def show
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
   private
   
   def set_task
-    set_task
+    @task = Task.find(params[:id])
   end
 
   # Strong Parameter
